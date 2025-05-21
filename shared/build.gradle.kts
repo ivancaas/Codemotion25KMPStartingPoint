@@ -13,7 +13,6 @@ plugins {
     alias(libs.plugins.ktorfit)
     alias(libs.plugins.skie)
     alias(libs.plugins.nativeCoroutines)
-    alias(libs.plugins.kotlinCocoapods)
 }
 
 skie {
@@ -60,15 +59,6 @@ kotlin {
         }
     }
 
-    cocoapods {
-        ios.deploymentTarget = "16.0"
-
-        version = "1.0.0"
-        pod("FirebaseAnalytics") {
-            version = "10.27.0"
-            extraOpts = listOf("-compiler-option", "-fmodules")
-        }
-    }
     sourceSets {
         all {
             languageSettings.optIn("kotlinx.cinterop.ExperimentalForeignApi")
@@ -93,7 +83,6 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.startup)
             implementation(libs.ktor.client.okhttp)
-            implementation(libs.firebase.analytics)
         }
     }
 }
